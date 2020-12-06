@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="445.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.LoginController">
+    <children>
+        <AnchorPane fx:id="userPanel" layoutX="53.0" layoutY="119.0" prefHeight="362.0" prefWidth="445.0" style="-fx-background-color: #0e3360;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <JFXTextField focusColor="#04c33a" layoutX="192.0" layoutY="21.0" prefHeight="25.0" prefWidth="150.0" promptText="Digite su nombre" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField focusColor="#04c33a" layoutX="192.0" layoutY="70.0" prefHeight="25.0" prefWidth="150.0" promptText="Digite su apellido" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField focusColor="#04c33a" layoutX="192.0" layoutY="125.0" prefHeight="25.0" prefWidth="150.0" promptText="Digite su identificacion" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <Label layoutX="32.0" layoutY="28.0" text="NOMBRE:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="32.0" layoutY="83.0" text="APELLIDO:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="33.0" layoutY="138.0" text="IDENTIFICACION:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <JFXComboBox focusColor="#04c33a" layoutX="362.0" layoutY="138.0" promptText="TIPO ID" style="-fx-background-color: #ffff;" />
+                <Separator layoutX="19.0" layoutY="182.0" opacity="0.3" prefHeight="3.0" prefWidth="408.0" />
+                <Label layoutX="26.0" layoutY="211.0" text="ESTADO CIVIL:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="26.0" layoutY="265.0" text="GÉNERO:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <JFXComboBox focusColor="#04c33a" layoutX="181.0" layoutY="211.0" prefHeight="25.0" prefWidth="150.0" promptText="SELECCIONAR" style="-fx-background-color: #ffff;" />
+                <JFXRadioButton layoutX="122.0" layoutY="265.0" text="MASCULINO" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXRadioButton>
+                <JFXRadioButton layoutX="267.0" layoutY="265.0" text="FEMENINO" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXRadioButton>
+            </children></AnchorPane>
+        <AnchorPane prefHeight="55.0" prefWidth="383.0" style="-fx-background-color: #0e3360;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox prefHeight="41.0" prefWidth="383.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Separator prefWidth="200.0" visible="false" />
+                        <ImageView fitHeight="36.0" fitWidth="35.0" onMouseClicked="#onUserButtonClicked" pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets top="15.0" />
+                            </HBox.margin>
+                     <image>
+                        <Image url="@../images/icon_user.png" />
+                     </image>
+                        </ImageView>
+                        <Separator prefWidth="200.0" visible="false" />
+                        <ImageView fitHeight="36.0" fitWidth="35.0" onMouseClicked="#onLocationButtonClicked" pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets top="15.0" />
+                            </HBox.margin>
+                     <image>
+                        <Image url="@../images/icon_location.png" />
+                     </image>
+                        </ImageView>
+                        <Separator prefWidth="200.0" visible="false" />
+                        <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets top="15.0" />
+                            </HBox.margin>
+                     <image>
+                        <Image url="@../images/icon_mortarboard.png" />
+                     </image>
+                        </ImageView>
+                        <Separator prefWidth="200.0" visible="false" />
+                        <ImageView fitHeight="36.0" fitWidth="35.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icon_exit.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets top="15.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" visible="false" />
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+        <ImageView fx:id="locationArrow" fitHeight="27.0" fitWidth="35.0" layoutX="162.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.topAnchor="64.0">
+            <image>
+                <Image url="@../images/icon_arrow.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="27.0" fitWidth="35.0" layoutX="256.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../images/icon_arrow.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="userArrow" fitHeight="27.0" fitWidth="35.0" layoutX="63.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/icon_arrow.png" />
+            </image>
+        </ImageView>
+        <AnchorPane fx:id="locationPanel" layoutY="104.0" prefHeight="362.0" prefWidth="445.0" style="-fx-background-color: #0e3360;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label layoutX="9.0" layoutY="15.0" text="RESIDENCIA" textFill="#757474">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="22.0" layoutY="59.0" text="PAIS:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="22.0" layoutY="100.0" text="ESTADO:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <JFXComboBox disable="true" focusColor="#04c33a" layoutX="117.0" layoutY="100.0" prefHeight="25.0" prefWidth="209.0" promptText="SELECCIONAR ESTADO" style="-fx-background-color: #ffff;" />
+                <Label layoutX="26.0" layoutY="211.0" text="DIRECCION:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="28.0" layoutY="256.0" text="TEL 1:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="119.0" layoutY="26.0" opacity="0.4" prefHeight="3.0" prefWidth="297.0" />
+                <JFXComboBox focusColor="#04c33a" layoutX="117.0" layoutY="59.0" prefHeight="25.0" prefWidth="209.0" promptText="SELECCIONAR PAIS" style="-fx-background-color: #ffff;" />
+                <Label layoutX="22.0" layoutY="135.0" text="CIUDAD:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <JFXComboBox disable="true" focusColor="#04c33a" layoutX="117.0" layoutY="135.0" prefHeight="25.0" prefWidth="209.0" promptText="SELECCIONAR CIUDAD" style="-fx-background-color: #ffff;" />
+                <Label layoutX="329.0" layoutY="181.0" text="CONTACTO" textFill="#757474">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="22.0" layoutY="192.0" opacity="0.4" prefHeight="3.0" prefWidth="297.0" />
+                <JFXTextField focusColor="#04c33a" layoutX="143.0" layoutY="209.0" prefHeight="30.0" prefWidth="195.0" promptText="Digite su direccion" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField focusColor="#04c33a" layoutX="88.0" layoutY="254.0" prefHeight="30.0" prefWidth="119.0" promptText="Telefono" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <Label layoutX="232.0" layoutY="256.0" text="TEL 1:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <JFXTextField focusColor="#04c33a" layoutX="292.0" layoutY="254.0" prefHeight="30.0" prefWidth="119.0" promptText="Opcional" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <Label layoutX="30.0" layoutY="300.0" text="CELULAR:" textFill="#fcf7f7">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <JFXTextField focusColor="#04c33a" layoutX="116.0" layoutY="298.0" prefHeight="30.0" prefWidth="87.0" promptText="Código Pais" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField focusColor="#04c33a" layoutX="218.0" layoutY="298.0" prefHeight="30.0" prefWidth="162.0" promptText="Numero de Celular" style="-fx-text-fill: #04c33a;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
