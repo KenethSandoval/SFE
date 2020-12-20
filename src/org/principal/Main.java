@@ -6,28 +6,24 @@
 package org.principal;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
+
 import java.io.InputStream;
+
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 //Me
 import org.controllers.LoginController;
+import org.controllers.DashboardController;
 
 public class Main extends Application {
-    /* Variables for view methods */
-    private final String VIEWS_PACKAGE = "/org/views/";
     //logo
-    private final String CSS_PACKAGE = "/org/css/";
+    //private final String CSS_PACKAGE = "/org/css/";
 
-    /* Variables for Scenes */
-    private LoginController loginController;
     private Stage mainScene;
     private Scene scene;
 
@@ -36,14 +32,13 @@ public class Main extends Application {
     private double yOffset;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        //Scene scene = new Scene(root);
-        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("SFE");
         primaryStage.setScene(scene);
         this.mainScene = primaryStage;
-        viewLogin();
+        viewDashboard();
         primaryStage.show();
     }
 
@@ -56,29 +51,26 @@ public class Main extends Application {
         try {
             charger = new FXMLLoader();
             charger.setBuilderFactory(new JavaFXBuilderFactory());
+            /* Variables for view methods */
+            String VIEWS_PACKAGE = "/org/views/";
             charger.setLocation(getClass().getResource(VIEWS_PACKAGE + fxml));
             file = getClass().getResourceAsStream(VIEWS_PACKAGE + fxml);
-            this.scene = new Scene((AnchorPane) charger.load(file));
+            this.scene = new Scene(charger.load(file));
             this.mainScene.setScene(this.scene);
             this.scene.setFill(Color.TRANSPARENT);
+
             /* Methods to move application */
-            this.scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    xOffset = event.getScreenX();
-                    yOffset = event.getSceneY();
-                }
+            this.scene.setOnMousePressed(event -> {
+                xOffset = event.getScreenX();
+                yOffset = event.getSceneY();
             });
 
-            this.scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
+            this.scene.setOnMouseDragged(event -> {
                     mainScene.setX(event.getScreenX() - xOffset);
                     mainScene.setY(event.getScreenY() - yOffset);
-                }
             });
 
-            result = (Initializable) charger.getController();
+            result = charger.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,8 +80,14 @@ public class Main extends Application {
 
     /* Views fxml */
     public void viewLogin() {
-        loginController = (LoginController) changeScene(LoginController.INTERFACE_NAME);
+        /* Variables for Scenes */
+        LoginController loginController = (LoginController) changeScene(LoginController.INTERFACE_NAME);
         LoginController.setMainScene(this);
+    }
+
+    public void viewDashboard() {
+        DashboardController dashboardController = (DashboardController) changeScene(DashboardController.INTERFACE_NAME);
+        DashboardController.setMainScene(this);
     }
 
     public static void main(String[] args) {
