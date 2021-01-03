@@ -28,7 +28,7 @@ CREATE TABLE purchases(
     delivery_data DATE not null,
     delivery_place varchar(100) not null,
     price decimal(10, 2) not null,
-    totalU decimal(10, 2) not null,
+    totalU int not null,
     total decimal(10, 2) not null,
     primary key Pk_purchases(idPurchases)
 );
@@ -72,3 +72,82 @@ CREATE TABLE bills(
     idProductions int not null,
     constraint Fk_bill_production foreign key(idProductions) references productions(idProductions)
 );
+
+/* PROCEDIMIENTOS ALMACENADOS */
+/* EMPLOYEE */
+DELIMITER //
+	CREATE PROCEDURE sp_AddEmployee(IN mname VARCHAR(50))
+    
+	BEGIN
+		INSERT INTO sistemafacturacion2.employee(name) VALUES(mname);
+	END //
+DELIMITER ;
+
+DELIMITER //
+	CREATE PROCEDURE sp_UpdateEmployee(IN midEmployee INT, IN mname VARCHAR(50))
+    
+	BEGIN
+		UPDATE sistemafacturacion2.employee 
+			SET employee.name = mname
+            WHERE employee.idEmployee = midEmployee;
+	END //
+DELIMITER ;
+
+DELIMITER //
+	CREATE PROCEDURE sp_DeleteEmployee(IN midEmployee INT)
+    
+	BEGIN
+		DELETE FROM sistemafacturacion2.employee WHERE employee.idEmployee = midEmployee;
+	END //
+DELIMITER ;
+
+/* CREACION DE CONSULTAS */
+CREATE VIEW vw_GetEmployee AS
+	SELECT employee.idEmployee, employee.name FROM sistemafacturacion2.employee;
+
+CALL sp_AddEmployee("ADAFDA");
+CALL sp_UpdateEmployee(9, "Nadie");
+CALL sp_DeleteEmployee(9);
+SELECT * FROM vw_getemployee;
+
+
+/* PROCEDIMIENTOS ALMACENADOS */
+/* BILLS */
+DELIMITER //
+	CREATE PROCEDURE sp_AddPurchases(IN pnumber_purchase INT, IN pclient_name VARCHAR(50), IN pdate_purchase DATE, IN pdelivery_date DATE, IN  pdelivery_place VARCHAR(100), IN pprice DECIMAL(10,2), IN ptotalU DECIMAL(10, 2), IN ptotal DECIMAL(10,2))
+    
+	BEGIN
+		INSERT INTO sistemafacturacion2.purchases(numberPurchase, client_name, date_purchase, delivery_data, delivery_place, price, totalU, total) VALUES(pnumber_purchase, pclient_name, pdate_purchase, pdelivery_date, pdelivery_place, pprice, ptotalU, ptotal);
+	END //
+DELIMITER ;
+DROP PROCEDURE sp_AddPurchases
+
+DELIMITER //
+	CREATE PROCEDURE sp_UpdatePurchases(IN pidpurchases INT, IN pclient_name VARCHAR(50), IN pdate_purchase DATE, IN pdelivery_data DATE, IN pdelivery_place VARCHAR(100), IN pprice DECIMAL(10,2), IN ptotalU INT, IN ptotal DECIMAL(10,2))
+    
+	BEGIN
+		UPDATE sistemafacturacion2.purchases 
+			SET purchases.client_name = pclient_name, purchases.date_purchase = pdate_purchase, purchases.delivery_data = pdelivery_data, purchases.delivery_place = pdelivery_place, purchases.price = pprice, purchases.totalU = ptotalU, purchases.total = ptotal
+            WHERE purchases.idPurchases = pidpurchases;
+	END //
+DELIMITER ;
+
+DELIMITER //
+	CREATE PROCEDURE sp_DeletePurchases(IN pidPurchase INT)
+    
+	BEGIN
+		DELETE FROM sistemafacturacion2.purchases WHERE purchases.idPurchases = pidPurchase;
+	END //
+DELIMITER ;
+
+/* CREACION DE CONSULTAS */
+CREATE VIEW vw_GetPurchases AS
+	SELECT purchases.idPurchases, purchases.numberPurchase, purchases.client_name, purchases.date_purchase, purchases.delivery_data, purchases.delivery_place, purchases.price, purchases.totalU, purchases.total 
+    FROM sistemafacturacion2.purchases;
+
+CALL sp_AddPurchases(1, 'Keneth', "2021-01-02", "2021-01-15", "Zona 10 Hangares", 10.00, 10, 100.00);
+
+CALL sp_UpdatePurchases(6, 'Keneth', "2021-01-02", "2021-01-15", "Zona 10 Hangares", 10.00, 10, 100.00);
+CALL sp_DeletePurchases(6);
+SELECT * FROM vw_getpurchases;
+
