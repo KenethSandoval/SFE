@@ -5,13 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import org.db.EmployeesDAO;
 import org.principal.Main;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
+public class DashboardController implements Initializable, EmployeesDAO {
 
     @FXML
     private VBox pnItems = null;
@@ -39,5 +40,7 @@ public class DashboardController implements Initializable {
                 e.printStackTrace();
             }
         }
+
+        getEmployees();
     }
 }
