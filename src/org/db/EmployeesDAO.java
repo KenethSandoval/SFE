@@ -18,7 +18,10 @@ public interface EmployeesDAO extends  ConnectionDB, MappingEmployees{
             rs = prst.executeQuery(GET_EMPLOYEES);
 
             while (rs.next()) {
-                System.out.println(rs.getString(NAME_EMPLOYEE));
+                employees.add(new Employees(
+                        rs.getInt(ID_EMPLOYEE),
+                        rs.getString(NAME_EMPLOYEE)
+                ));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable, EmployeesDAO {
+public class DashboardController implements Initializable {
 
     @FXML
     private VBox pnItems = null;
@@ -36,11 +36,10 @@ public class DashboardController implements Initializable, EmployeesDAO {
             try {
                 nodes[i] = FXMLLoader.load(getClass().getResource("/org/views/Item.fxml"));
                 pnItems.getChildren().add(nodes[i]);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-        getEmployees();
     }
 }
